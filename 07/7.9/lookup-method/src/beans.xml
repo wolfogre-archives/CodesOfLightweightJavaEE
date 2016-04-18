@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese">
+		<!-- Spring只要检测到lookup-method元素，
+		Spring会自动为该元素的name属性所指定的方法提供实现体。-->
+		<lookup-method name="getDog" bean="gunDog"/>
+	</bean>
+	<!-- 指定gunDog Bean的作用域为prototype，
+	希望程序每次使用该Bean时用到的总是不同的实例 -->
+	<bean id="gunDog" class="org.crazyit.app.service.impl.GunDog"
+		scope="prototype">
+		<property name="name" value="旺财"/>
+	</bean>
+</beans>

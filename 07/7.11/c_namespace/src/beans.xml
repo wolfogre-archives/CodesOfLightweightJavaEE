@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 配置chinese实例，其实现类是Chinese -->
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese"
+		c:axe-ref="steelAxe" c:age="29"/>
+	<!-- 配置chinese实例，其实现类是Chinese -->
+	<bean id="chinese2" class="org.crazyit.app.service.impl.Chinese"
+		c:_0-ref="steelAxe" c:_1="29"/>
+	<!-- 配置stoneAxe实例，其实现类是StoneAxe -->
+	<bean id="stoneAxe" class="org.crazyit.app.service.impl.StoneAxe"/>
+	<!-- 配置steelAxe实例，其实现类是SteelAxe -->
+	<bean id="steelAxe" class="org.crazyit.app.service.impl.SteelAxe"/>
+</beans>

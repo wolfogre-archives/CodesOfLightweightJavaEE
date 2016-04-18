@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 下面配置相当于如下代码：
+	FactoryBean factory = new org.crazyit.app.factory.GetFieldFactoryBean();
+	factory.setTargetClass("java.awt.BorderLayout");
+	factory.setTargetField("NORTH");
+	north = factory.getObject(); -->
+	<bean id="north" class="org.crazyit.app.factory.GetFieldFactoryBean">
+		<property name="targetClass" value="java.awt.BorderLayout"/>
+		<property name="targetField" value="NORTH"/>
+	</bean>
+	<!-- 下面配置相当于如下代码：
+	FactoryBean factory = new org.crazyit.app.factory.GetFieldFactoryBean();
+	factory.setTargetClass("java.sql.ResultSet");
+	factory.setTargetField("TYPE_SCROLL_SENSITIVE");
+	north = factory.getObject(); -->
+	<bean id="theValue" class="org.crazyit.app.factory.GetFieldFactoryBean">
+		<property name="targetClass" value="java.sql.ResultSet"/>
+		<property name="targetField" value="TYPE_SCROLL_SENSITIVE"/>
+	</bean>
+</beans>

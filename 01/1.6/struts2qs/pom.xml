@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="gbk"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.crazyit</groupId>
+	<artifactId>struts2qs</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>struts2qs</name>
+	<url>http://www.crazyit.org</url>
+
+	<!-- 定义该项目所使用License -->
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<!-- 声明该项目所属的组织 -->
+	<organization>
+		<name>CrazyIt</name>
+		<url>http://www.crazyit.org</url>
+	</organization>
+
+	<!-- 声明项目开发者 -->
+	<developers>
+		<developer>
+			<id>kongyeeku</id>
+			<name>kongyeeku</name>
+			<email>kongyeeku@gmai.com</email>
+			<url>http://www.crazyit.or</url>
+			<organization>CrazyIt</organization>
+			<!-- 声明开发者的角色 -->
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<!-- 声明对项目有贡献的人 -->
+	<contributors>
+		<contributor>
+			<name>fkjava</name>
+			<email>fkjava@hotmail.com</email>
+			<url>http://www.fkjava.org</url>
+			<organization>疯狂软件教育中心</organization>
+			<roles>
+				<role>developer</role>
+			</roles>		
+		</contributor>
+	</contributors>
+
+	<dependencies>
+		<!-- 配置该项目依赖Struts 2 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<!-- 此处指定依赖的Struts 2版本 -->
+			<version>2.3.16.3</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<finalName>struts2qs</finalName>
+	</build>
+</project>

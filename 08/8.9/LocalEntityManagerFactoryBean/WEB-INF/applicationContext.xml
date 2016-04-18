@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- 配置EntityManagerFactor、并注入JPA持久化单元 -->
+	<bean id="emf" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"
+		p:persistenceUnitName="books_pu"/>
+
+	<!-- 该Bean后处理器会告诉Spring处理DAO组件中 @PersistenceContext注解， -->
+	<bean class=
+	"org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+	
+	<!-- 定义Service组件，并将DAO组件注入Service组件 -->	
+	<bean id="bookService" class="org.crazyit.booksys.service.impl.BookServiceImpl"
+		p:bookDao-ref="bookDao"/>
+	<!-- 定义DAO组件，并将SessionFactory注入DAO组件 -->		
+	<bean id="bookDao" class="org.crazyit.booksys.dao.impl.BookDaoJpa"/>
+	
+	<!-- 配置针对JPA的局部事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="emf"/>
+
+	<!-- 根据事务注解来生成事务代理 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 下面配置驱动Spring调用BeingFactory的静态getBeing()方法来创建Bean
+	该bean元素包含的constructor-arg元素用于为静态工厂方法指定参数，
+	因此这段配置会驱动Spring以反射方式来执行如下代码：
+	dog = org.crazyit.app.factory.BeingFactory.getBeing("dog"); -->
+	<bean id="dog" class="org.crazyit.app.factory.BeingFactory"
+		factory-method="getBeing">
+		<!-- 配置静态工厂方法的参数 -->
+		<constructor-arg value="dog"/>
+		<!-- 驱动Spring以"我是狗"为参数来执行dog的setMsg()方法 -->
+		<property name="msg" value="我是狗"/>
+	</bean>
+	<!--  下面配置会驱动Spring以反射方式来执行如下代码：
+	dog = org.crazyit.app.factory.BeingFactory.getBeing("cat"); -->
+	<bean id="cat" class="org.crazyit.app.factory.BeingFactory"
+		factory-method="getBeing">
+		<!-- 配置静态工厂方法的参数 -->
+		<constructor-arg value="cat"/>
+		<!-- 驱动Spring以"我是猫"为参数来执行dog的setMsg()方法 -->
+		<property name="msg" value="我是猫"/>
+	</bean>
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="GBK"/>
+	<!-- 配置了一个包元素 -->
+   	<package name="lee" extends="struts-default">
+		<action name="login" class="org.crazyit.app.action.LoginAction">
+			<result name="input">/WEB-INF/content/loginForm.jsp</result>
+			<result>/WEB-INF/content/result.jsp</result>
+			<result name="error">/WEB-INF/content/result.jsp</result>
+		</action>
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

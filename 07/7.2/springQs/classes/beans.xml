@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 配置名为person的Bean，其实现类是org.crazyit.app.service.Person类 -->
+	<bean id="person" class="org.crazyit.app.service.Person">
+		<!-- 控制调用setAxe()方法，将容器中axe Bean作为传入参数 -->
+		<property name="axe" ref="axe"/>
+	</bean>
+	<!-- 配置名为axe的Bean，其实现类是org.crazyit.app.service.Axe类 -->
+	<bean id="axe" class="org.crazyit.app.service.Axe"/>
+	<!-- 配置名为win的Bean，其实现类是javax.swing.JFrame类 -->
+	<bean id="win" class="javax.swing.JFrame"/>
+	<!-- 配置名为date的Bean，其实现类是java.util.Date类 -->
+	<bean id="date" class="java.util.Date"/>
+</beans>

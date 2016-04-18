@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 将指定类的静态Field值定义成容器中的Bean实例-->
+	<bean id="theAge1" class=
+		"org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<!-- targetClass指定访问哪个目标类 -->
+		<property name="targetClass" value="java.sql.Connection"/>
+		<!-- targetField指定要访问的Field名 -->
+		<property name="targetField" value="TRANSACTION_SERIALIZABLE"/>
+	</bean>
+
+	<!-- 简化配置
+	<util:constant id="theAge1" 
+	static-field="java.sql.Connection.TRANSACTION_SERIALIZABLE"/> -->
+
+	<!-- 将指定类的静态Field值定义成容器中的Bean实例 -->
+	<bean id="theAge2" class=
+		"org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<!-- staticField指定访问哪个类的哪个静态Field -->
+		<property name="staticField" 
+			value="java.sql.Connection.TRANSACTION_SERIALIZABLE"/>
+	</bean>
+
+	<bean id="son" class="org.crazyit.app.service.Son">
+		<property name="age">
+			<!-- 指定java.sql.Connection.TRANSACTION_SERIALIZABLE
+				作为调用setAge()方法的参数值 -->
+			<bean id="java.sql.Connection.TRANSACTION_SERIALIZABLE" class=
+			"org.springframework.beans.factory.config.FieldRetrievingFactoryBean"/>
+		</property>
+	</bean>
+
+	<!-- 简化配置
+	<bean id="son" class="org.crazyit.app.service.Son">
+		<property name="age">
+			<util:constant
+			static-field="java.sql.Connection.TRANSACTION_SERIALIZABLE"/>
+		</property>
+	</bean> -->
+</beans>

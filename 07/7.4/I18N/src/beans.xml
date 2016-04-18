@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="messageSource"
+	class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!-- 驱动Spring调用messageSource Bean的setBasenames()方法，
+			该方法需要一个数组参数，使用list元素配置多个数组元素 -->
+		<property name="basenames">
+			<list>
+				<value>message</value>
+				<!-- 如果有多个资源文件，全部列在此处 -->
+			</list>
+		</property>
+	</bean>
+</beans>

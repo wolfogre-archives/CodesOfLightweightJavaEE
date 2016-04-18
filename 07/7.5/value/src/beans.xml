@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="exampleBean" class="org.crazyit.app.service.ExampleBean">
+		<!-- 指定int型的参数值 -->
+		<property name="integerField" value="1"/>
+		<!-- 指定double型的参数值 -->
+		<property name="doubleField" value="2.3"/>
+	</bean>
+</beans>

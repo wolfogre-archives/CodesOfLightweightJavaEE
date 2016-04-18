@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 指定使用byName策略，Spring会根据setter方法的方法名与Bean的id进行匹配 -->
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese"
+		autowire="byName"/>
+	<bean id="gunDog" class="org.crazyit.app.service.impl.GunDog">
+		<property name="name" value="wangwang"/>
+	</bean>
+</beans>

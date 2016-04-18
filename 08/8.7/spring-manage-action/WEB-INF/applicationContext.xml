@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 定义一个业务逻辑组件，实现类为MyServiceImp -->
+	<bean id="myService" 
+		class="org.crazyit.app.service.impl.MyServiceImpl"/>
+	<!-- 让Spring管理的Action实例，并依赖注入业务逻辑组件 -->
+	<bean id="loginAction" class="org.crazyit.app.action.LoginAction"
+		scope="prototype" p:ms-ref="myService"/>
+</beans>
+

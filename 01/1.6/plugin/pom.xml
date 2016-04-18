@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.fkjava</groupId>
+	<artifactId>mavenQs</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>mavenQs</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<!-- 下面3个元素定义了exec插件的坐标 -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.3.1</version>
+				<executions>
+					<execution>
+					<!-- 指定绑定到compile阶段 -->
+					<phase>compile</phase>  <!-- ① -->
+					<!-- 指定运行exec插件的java目标 -->
+					<goals>
+						<goal>java</goal>  <!-- ② -->
+					</goals>
+					<!--- configuration元素用于为插件的目标配置参数 -->
+					<configuration>
+						<!-- 下面元素配置mainClass参数的值为：org.fkjava.mavenqs.App -->
+						<mainClass>org.fkjava.mavenqs.App</mainClass>
+					</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

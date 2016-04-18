@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="GBK"/>
+	<constant name="struts.custom.i18n.resources" value="RegistAction"/>
+
+	<package name="lee" extends="struts-default">
+	<!-- 用户注册的Action -->
+	<action name="regist" class="org.crazyit.app.action.RegistAction">
+		<!-- 类型转换失败、输入校验失败，转入input对应的视图 -->
+		<result name="input">/WEB-INF/content/registForm.jsp</result>
+		<result>/WEB-INF/content/show.jsp</result>
+	</action>
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

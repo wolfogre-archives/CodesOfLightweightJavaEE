@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 配置chinese实例，其实现类是Chinese -->
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese">
+		<!-- 驱动Spring执行setAxe()方法，以容器中id为stoneAxe的Bean为参数 -->
+		<property name="axe" ref="stoneAxe"/>
+		<!-- 驱动Spring执行setName()方法，以字符串"孙悟空"为参数 -->
+		<property name="name" value="孙悟空"/>
+	</bean>
+	<!-- 配置stoneAxe实例，其实现类是StoneAxe -->
+	<bean id="stoneAxe" class="org.crazyit.app.service.impl.StoneAxe"/>
+	<!-- 配置steelAxe实例，其实现类是SteelAxe -->
+	<bean id="steelAxe" class="org.crazyit.app.service.impl.SteelAxe"/>
+</beans>

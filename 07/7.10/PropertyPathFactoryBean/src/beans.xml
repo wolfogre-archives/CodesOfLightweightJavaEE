@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<!--下面配置定义一个将要被引用的目标bean-->
+	<bean id="person" class="org.crazyit.app.service.Person">
+		<property name="age" value="30"/>
+		<property name="son">
+			<!-- 使用嵌套Bean定义setSon()方法的参数值 -->
+			<bean class="org.crazyit.app.service.Son">
+				<property name="age" value="11" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- 将指定Bean实例的getter方法返回值定义成son1 Bean -->
+	<bean id="son1" class=
+		"org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<!-- 确定目标Bean，指定son1 Bean来自哪个Bean的getter方法 -->
+		<property name="targetBeanName" value="person"/>
+		<!-- 指定son1 Bean来自目标bean的哪个getter方法，son代表getSon() -->
+		<property name="propertyPath" value="son"/>
+	</bean>
+
+	<!-- 简化配置
+	<util:property-path id="son1" path="person.son"/> -->
+
+	<!-- 下面定义son2 Bean -->
+	<bean id="son2" class="org.crazyit.app.service.Son">
+		<property name="age">
+			<!-- 使用嵌套Bean为调用setAge()方法指定参数值 -->
+			<!-- 以下是访问指定Bean的getter方法的简单方式, 
+			person.son.age代表获取person.getSon().getAge()-->
+			<bean id="person.son.age" class=
+				"org.springframework.beans.factory.config.PropertyPathFactoryBean"/>
+		</property>
+	</bean>
+
+	<!-- 简化配置
+	<bean id="son2" class="org.crazyit.app.service.Son">
+		<property name="age">
+			<util:property-path path="person.son.age"/>
+		</property>
+	</bean> -->
+
+	<!-- 将基本数据类型的属性值定义成Bean实例 -->
+	<bean id="theAge" class=
+		"org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<!-- 确定目标Bean，表明theAge Bean来自哪个Bean的getter方法的返回值 -->
+		<property name="targetBeanName" value="person"/>
+		<!-- 使用复合属性来指定getter方法。son.age代表getSon().getAge() -->
+		<property name="propertyPath" value="son.age"/>
+	</bean>
+
+	<!-- 简化配置
+	<util:property-path id="theAge" path="person.son.age"/> -->
+
+	<!-- 将基本数据类型的属性值定义成Bean实例 -->
+	<bean id="theAge2" class=
+		"org.springframework.beans.factory.config.PropertyPathFactoryBean">
+		<!-- 确定目标Bean，表明theAge2 Bean来自哪个Bean的属性。
+			此处采用嵌套Bean定义目标Bean -->
+		<property name="targetObject">
+			<!-- 目标Bean不是容器中已经存在的Bean, 而是如下的嵌套Bean-->
+			<bean class="org.crazyit.app.service.Person">
+				<property name="age" value="30"/>
+			</bean>
+		</property>
+		<!-- 指定theAge2 Bean来自目标bean的哪个getter方法，age代表getAge() -->
+		<property name="propertyPath" value="age"/>
+	</bean>
+</beans>

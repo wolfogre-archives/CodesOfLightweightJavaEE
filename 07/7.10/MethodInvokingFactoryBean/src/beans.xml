@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<!-- 下面配置相当于如下Java代码：
+	JFrame win = new JFrame("我的窗口");
+	win.setVisible(true); -->
+	<bean id="win" class="javax.swing.JFrame">
+		<constructor-arg value="我的窗口" type="java.lang.String"/>
+		<property name="visible" value="true"/>
+	</bean>
+	
+	<!-- 下面配置相当于如下Java代码：
+	JTextArea jta = JTextArea(7, 40); -->
+	<bean id="jta" class="javax.swing.JTextArea">
+		<constructor-arg value="7" type="int"/>
+		<constructor-arg value="40" type="int"/>
+	</bean>	
+	
+	<!-- 使用MethodInvokingFactoryBean驱动Spring调用普通方法
+	下面配置相当于如下Java代码：
+	win.add(new JScrollPane(jta)); -->
+	<bean class=
+	"org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="win"/>
+		<property name="targetMethod" value="add"/>
+		<property name="arguments">
+			<list>
+				<bean class="javax.swing.JScrollPane">
+					<constructor-arg ref="jta"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 下面配置相当于如下Java代码：
+	JPanel jp = new JPanel(); -->
+	<bean id="jp" class="javax.swing.JPanel"/>
+
+	<!-- 使用MethodInvokingFactoryBean驱动Spring调用普通方法
+	下面配置相当于如下Java代码：
+	win.add(jp , BorderLayout.SOUTH); -->
+	<bean class=
+		"org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="win"/>
+		<property name="targetMethod" value="add"/>
+		<property name="arguments">
+			<list>
+				<ref bean="jp"/>
+				<util:constant static-field="java.awt.BorderLayout.SOUTH"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 下面配置相当于如下Java代码：
+	JButton jb1 = new JButton("确定"); -->
+	<bean id="jb1" class="javax.swing.JButton">
+		<constructor-arg value="确定" type="java.lang.String"/>
+	</bean>
+	
+	<!-- 使用MethodInvokingFactoryBean驱动Spring调用普通方法
+	下面配置相当于如下Java代码：
+	jp.add(jb1); -->
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="jp"/>
+		<property name="targetMethod" value="add"/>
+		<property name="arguments">
+			<list>
+				<ref bean="jb1"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 下面配置相当于如下Java代码：
+	JButton jb2 = new JButton("取消"); -->
+	<bean id="jb2" class="javax.swing.JButton">
+		<constructor-arg value="取消" type="java.lang.String"/>
+	</bean>
+	
+	<!-- 使用MethodInvokingFactoryBean驱动Spring调用普通方法
+	下面配置相当于如下Java代码：
+	jp.add(jb2); -->
+	<bean class=
+		"org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="jp"/>
+		<property name="targetMethod" value="add"/>
+		<property name="arguments">
+			<list>
+				<ref bean="jb2"/>
+			</list>
+		</property>
+	</bean>
+	<!-- 使用MethodInvokingFactoryBean驱动Spring调用普通方法
+	下面配置相当于如下Java代码：
+	win.pack(); -->
+	<bean class=
+		"org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="win"/>
+		<property name="targetMethod" value="pack"/>
+	</bean>
+</beans>

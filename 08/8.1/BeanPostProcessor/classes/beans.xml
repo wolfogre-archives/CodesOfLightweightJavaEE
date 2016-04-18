@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 配置2个普通Bean实例 -->
+	<bean id="steelAxe" class="org.crazyit.app.service.impl.SteelAxe"/>
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese"
+		init-method="init" p:axe-ref="steelAxe" p:name="依赖注入的值"/>
+	<!-- 配置Bean后处理器，可以无需指定id属性 -->
+	<bean id="bp" class="org.crazyit.app.util.MyBeanPostProcessor"/>
+</beans>

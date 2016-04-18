@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- Spring容器会检测容器中所有Bean，如果发现某个Bean实现了BeanNameAware接口，
+	Spring容器会在创建该Bean之后，自动调用该Bean的setBeanName()方法，
+	调用该方法时，会将该Bean的配置id作为参数传给该方法
+	该方法的实现部分将Spring传入的参数（Bean的配置id）赋为给该Chinese对象的
+	beanName实例变量，因此接下来即可通过该beanName实例变量来访问Bean的配置id。-->
+	<bean id="chinese" class="org.crazyit.app.service.Chinese"/>
+</beans>

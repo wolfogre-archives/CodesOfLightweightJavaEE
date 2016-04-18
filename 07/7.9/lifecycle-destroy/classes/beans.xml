@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="steelAxe" class="org.crazyit.app.service.impl.SteelAxe"/>
+	<!--  配置chinese Bean，使用destroy-method="close"
+		指定该Bean实例被销毁之前，Spring会自动执行指定该Bean的close方法 -->
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese"
+		destroy-method="close">
+		<property name="axe" ref="steelAxe"/>
+	</bean>
+</beans>

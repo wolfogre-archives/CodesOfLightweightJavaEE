@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 指定使用request作用域 -->
+	<bean id="p" class="org.crazyit.app.service.Person"
+		scope="request"/>
+</beans>

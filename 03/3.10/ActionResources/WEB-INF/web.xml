@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<!-- 定义Struts 2的核心控制器：StrutsPrepareAndExecuteFilter -->
+	<filter>
+		<!-- 定义核心Filter的名字 -->
+		<filter-name>struts2</filter-name>
+		<!-- 定义核心Filter的实现类 -->
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<!-- StrutsPrepareAndExecuteFilter用来处理所有的HTTP请求 -->
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

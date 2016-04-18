@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans>	
+	<bean id="computer" class="lee.Computer">
+		<!-- 为name注入基本类型的值 -->
+		<property name="name" value="孙悟空的电脑"/>
+		<!-- 为out注入容器中其他Bean -->
+		<property name="out" ref="betterPrinter"/>
+	</bean>
+	<!-- 配置两个Bean实例 -->
+	<bean id="printer" class="lee.Printer"/> 
+	<bean id="betterPrinter" class="lee.BetterPrinter"/>
+	<!-- 配置一个prototype行为的Bean实例 -->
+	<bean id="now" class="java.util.Date" scope="prototype"/> <!--①-->
+</beans>

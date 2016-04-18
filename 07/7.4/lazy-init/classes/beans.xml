@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 如果不加任何特殊的配置，该Bean默认是singleton行为的 -->
+	<bean id="chinese" class="org.crazyit.app.service.Person" lazy-init="true">
+		<!-- 驱动Spring执行chinese Bean的setTest()方法，以"孙悟空"为传入参数 -->
+		<property name="test" value="孙悟空"/>
+	</bean>
+</beans>

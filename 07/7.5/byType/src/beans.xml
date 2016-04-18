@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 指定使用byType策略，Spring会根据setter方法的参数类型与Bean的类型进行匹配 -->
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese"
+		autowire="byType"/>
+	<bean id="gunDog" class="org.crazyit.app.service.impl.GunDog">
+		<property name="name" value="wangwang"/>
+	</bean>
+	<!-- 配置petDog Bean，其实现类也实现了Dog接口 -->
+	<bean id="petDog" class="org.crazyit.app.service.impl.PetDog"
+		autowire-candidate="false">
+		<property name="name" value="ohoh"/>
+	</bean>
+
+</beans>

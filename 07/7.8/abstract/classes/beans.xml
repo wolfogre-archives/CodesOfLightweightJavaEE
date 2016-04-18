@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 定义Axe实例 -->
+	<bean id="steelAxe" class="org.crazyit.app.service.impl.SteelAxe"/>
+	<!-- 指定abstract="true"定义抽象Bean -->
+	<bean id="personTemplate" abstract="true">
+		<property name="name" value="crazyit"/>
+		<property name="axe" ref="steelAxe"/>
+	</bean>
+	<!-- 通过指定parent属性指定下面Bean配置可从父Bean继承得到配置信息 -->
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese"
+		parent="personTemplate"/>
+	<bean id="american" class="org.crazyit.app.service.impl.American"
+		parent="personTemplate"/>
+</beans>

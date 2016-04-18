@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="chinese" class="org.crazyit.app.service.impl.Chinese">
+		<!-- 驱动调用chinese的setAxe()方法，使用嵌套Bean作为参数 -->
+		<property name="axe">
+			<!-- 嵌套Bean配置的对象仅作为setter方法的参数
+				嵌套Bean不能被容器访问，因此无需指定id属性-->
+			<bean class="org.crazyit.app.service.impl.SteelAxe"/>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Hibernate映射文件的DTD信息 -->
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- hibernate-mapping是映射文件的根元素 -->
+<hibernate-mapping package="org.crazyit.app.domain">
+	<class name="Person" table="person_inf">
+		<!-- 映射组件类型的标识属性 -->
+		<composite-id name="name" class="Name">
+			<!-- 映射复合主键里的各个属性 -->
+			<key-property name="first" type="string"/>
+			<key-property name="last" type="string"/>
+		</composite-id>
+		<!-- 映射普通属性 -->
+		<property name="email" type="string"/>
+		<!-- 映射组件属性cat，组件属性的类型为Cat -->
+		<component name="pet" class="Cat" >
+			<!-- 指定owner属性代表容器实体 -->
+			<parent name="owner"/>
+			<!-- 映射组件属性的first属性 -->
+			<property name="name" column="cat_name"/>
+			<!-- 映射组件属性的last属性 -->
+			<property name="color" column="cat_color"/>
+		</component>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 配置一个singleton Bean实例 -->
+	<bean id="p1" class="org.crazyit.app.service.Person"/>
+	<!-- 配置一个prototype Bean实例 -->
+	<bean id="p2" class="org.crazyit.app.service.Person"
+		scope="prototype"/>
+	<bean id="date" class="java.util.Date"/>
+</beans>

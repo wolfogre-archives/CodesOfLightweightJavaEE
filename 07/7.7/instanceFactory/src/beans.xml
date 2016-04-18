@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<!-- 配置工厂Bean,该Bean负责产生其他Bean实例 -->
+	<bean id="personFactory" class="org.crazyit.app.factory.PersonFactory"/>
+	<!-- 下面配置驱动Spring调用personFactory Bean的getPerson()方法来创建Bean
+	该bean元素包含的constructor-arg元素用于为工厂方法指定参数，
+	因此这段配置会驱动Spring以反射方式来执行如下代码：
+	PersonFactory pf = container.get("personFactory"); // container代表Spring容器
+	chinese = pf.getPerson("chin"); -->
+	<bean id="chinese" factory-bean="personFactory" 
+		factory-method="getPerson">
+		<!-- 配置实例工厂方法的参数 -->
+		<constructor-arg value="chin"/>
+	</bean>
+	<!--  下面配置会驱动Spring以反射方式来执行如下代码：
+	PersonFactory pf = container.get("personFactory"); // container代表Spring容器
+	american = pf.getPerson("ame"); -->
+	<bean id="american" factory-bean="personFactory"
+		factory-method="getPerson">
+		<constructor-arg value="ame"/>
+	</bean>
+</beans>
